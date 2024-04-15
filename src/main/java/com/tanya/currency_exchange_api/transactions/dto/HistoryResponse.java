@@ -1,4 +1,4 @@
-package com.tanya.currency_exchange_api;
+package com.tanya.currency_exchange_api.transactions.dto;
 
 import java.util.List;
 

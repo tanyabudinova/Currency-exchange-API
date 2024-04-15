@@ -1,5 +1,7 @@
-package com.tanya.currency_exchange_api;
+package com.tanya.currency_exchange_api.transactions;
 
+import com.tanya.currency_exchange_api.transactions.dto.ConvertRequest;
+import com.tanya.currency_exchange_api.transactions.dto.HistoryRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
