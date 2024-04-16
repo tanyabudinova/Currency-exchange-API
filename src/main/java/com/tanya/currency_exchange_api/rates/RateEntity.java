@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class RateEntity {
     @EmbeddedId
     private RatesId id;
-    Double rate;
+    private Double rate;
 
     public RateEntity() {}
 

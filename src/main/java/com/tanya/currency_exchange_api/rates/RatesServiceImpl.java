@@ -1,26 +1,33 @@
 package com.tanya.currency_exchange_api.rates;
 
 import com.tanya.currency_exchange_api.rates.dto.RatesResponse;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class RatesServiceImpl implements RatesService {
 
-    public static Map<String, Map<String, Double>> rates;
+    private final RatesRepository ratesRepository;
 
-    public RatesServiceImpl() {
-        rates = new HashMap<>();
-        Map<String, Double> values = new HashMap<>();
-        values.put("CAD", 1.26);
-        values.put("CHF", 0.98);
-        rates.put("USD", values);
+    public RatesServiceImpl(RatesRepository ratesRepository) {
+        this.ratesRepository = ratesRepository;
     }
 
     @Override
-    public RatesResponse getExchangeRate(String source, String target) {
-        return new RatesResponse(rates.get(source).get(target));
+    public Optional<RatesResponse> getExchangeRate(String source, String target) {
+        RateEntity.RatesId id = new RateEntity.RatesId(source, target);
+        return ratesRepository.findById(id).map(x -> new RatesResponse(x.getRate()));
     }
+
+    @Override
+    public void saveListOfRates(List<Rate> rates) {
+        List<RateEntity> entities = rates.stream().map(rate -> {
+            RateEntity.RatesId id = new RateEntity.RatesId(rate.source(), rate.target());
+            return new RateEntity(id, rate.rate());
+        }).toList();
+        ratesRepository.saveAllAndFlush(entities);
+    }
+
 }
