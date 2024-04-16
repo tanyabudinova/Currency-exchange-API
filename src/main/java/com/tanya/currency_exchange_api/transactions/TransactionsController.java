@@ -1,6 +1,7 @@
 package com.tanya.currency_exchange_api.transactions;
 
 import com.tanya.currency_exchange_api.transactions.dto.ConvertRequest;
+import com.tanya.currency_exchange_api.transactions.dto.ConvertResponse;
 import com.tanya.currency_exchange_api.transactions.dto.HistoryRequest;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class TransactionsController {
 
     @PostMapping
-    public ConvertRequest currencyConversion(@RequestBody ConvertRequest convertRequest) {
+    public ConvertResponse currencyConversion(@RequestBody ConvertRequest convertRequest) {
         return null;
     }
 

@@ -2,6 +2,7 @@ package com.tanya.currency_exchange_api.rates;
 
 import com.tanya.currency_exchange_api.rates.dto.RatesRequest;
 import com.tanya.currency_exchange_api.rates.dto.RatesResponse;
+import com.tanya.currency_exchange_api.utils.ApiError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +23,9 @@ public class RatesController {
 
     @GetMapping
     public ResponseEntity<RatesResponse> exchangeRate(RatesRequest ratesRequest) {
-        Optional<RatesResponse> result = ratesService.getExchangeRate(ratesRequest.sourceCurrency(),
+        RatesResponse result = ratesService.getExchangeRate(ratesRequest.sourceCurrency(),
                                                                     ratesRequest.targetCurrency());
-        return ResponseEntity.of(result);
+        return ResponseEntity.ok()
+                .body(result);
     }
-
 }

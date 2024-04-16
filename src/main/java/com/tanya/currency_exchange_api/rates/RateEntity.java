@@ -8,17 +8,17 @@ import java.io.Serializable;
 @Table(name = "rates")
 public class RateEntity {
     @EmbeddedId
-    private RatesId id;
+    private RateId id;
     private Double rate;
 
     public RateEntity() {}
 
-    public RateEntity(RatesId id, Double rate) {
+    public RateEntity(RateId id, Double rate) {
         this.id = id;
         this.rate = rate;
     }
 
-    public RatesId getId() {
+    public RateId getId() {
         return id;
     }
 
@@ -26,7 +26,7 @@ public class RateEntity {
         return rate;
     }
 
-    public void setId(RatesId id) {
+    public void setId(RateId id) {
         this.id = id;
     }
 
@@ -35,13 +35,13 @@ public class RateEntity {
     }
 
     @Embeddable
-    static class RatesId implements Serializable {
+    public static class RateId implements Serializable {
         private String source;
         private String target;
 
-        public RatesId() {}
+        public RateId() {}
 
-        public RatesId(String source, String target) {
+        public RateId(String source, String target) {
             this.source = source;
             this.target = target;
         }
