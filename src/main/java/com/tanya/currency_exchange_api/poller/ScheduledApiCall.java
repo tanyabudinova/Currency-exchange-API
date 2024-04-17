@@ -2,7 +2,6 @@ package com.tanya.currency_exchange_api.poller;
 
 import com.tanya.currency_exchange_api.rates.Rate;
 import com.tanya.currency_exchange_api.rates.RatesService;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
