@@ -1,9 +1,10 @@
 package com.tanya.currency_exchange_api.transactions.dto;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public record ConvertResponse(
-        Integer transactionId,
+        UUID transactionId,
         BigDecimal amount
 ) {
 }

@@ -4,13 +4,14 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "transactions")
 public class TransactionEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     private BigDecimal sourceAmount;
     private Double rate;
     private String sourceCurrency;
@@ -19,7 +20,7 @@ public class TransactionEntity {
 
     public TransactionEntity() {}
 
-    public TransactionEntity(Integer id, BigDecimal sourceAmount, Double rate, String sourceCurrency, String targetCurrency, LocalDateTime timestamp) {
+    public TransactionEntity(UUID id, BigDecimal sourceAmount, Double rate, String sourceCurrency, String targetCurrency, LocalDateTime timestamp) {
         this.id = id;
         this.sourceAmount = sourceAmount;
         this.rate = rate;
@@ -28,7 +29,7 @@ public class TransactionEntity {
         this.timestamp = timestamp;
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -52,7 +53,7 @@ public class TransactionEntity {
         return timestamp;
     }
 
-    public TransactionEntity setId(Integer id) {
+    public TransactionEntity setId(UUID id) {
         this.id = id;
         return this;
     }

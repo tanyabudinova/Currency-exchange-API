@@ -14,6 +14,12 @@ public class ExceptionHandlerAdvice {
         return buildResponse(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
+    @ExceptionHandler(MissingTransactionException.class)
+    public ResponseEntity<ApiError> handleException(MissingTransactionException e) {
+        // TODO:log exception
+        return buildResponse(HttpStatus.NOT_FOUND, e.getMessage());
+    }
+
     private ResponseEntity<ApiError> buildResponse(HttpStatus status, String message) {
         return ResponseEntity
                 .status(status)
