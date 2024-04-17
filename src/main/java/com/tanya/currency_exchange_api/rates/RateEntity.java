@@ -34,6 +34,24 @@ public class RateEntity {
         this.rate = rate;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RateEntity entity = (RateEntity) o;
+
+        if (!id.equals(entity.id)) return false;
+        return rate.equals(entity.rate);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + rate.hashCode();
+        return result;
+    }
+
     @Embeddable
     public static class RateId implements Serializable {
         private String source;
@@ -60,6 +78,24 @@ public class RateEntity {
 
         public void setTarget(String target) {
             this.target = target;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            RateId rateId = (RateId) o;
+
+            if (!source.equals(rateId.source)) return false;
+            return target.equals(rateId.target);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = source.hashCode();
+            result = 31 * result + target.hashCode();
+            return result;
         }
     }
 }
