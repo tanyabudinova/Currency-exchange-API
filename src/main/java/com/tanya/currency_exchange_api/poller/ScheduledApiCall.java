@@ -17,7 +17,8 @@ public class ScheduledApiCall {
         this.apiFetcher = apiFetcher;
     }
 
-    //@Scheduled(fixedRate = 1000000)//cron = "5 * * * * ?")
+    //@Scheduled(cron = "0 0 0 * * ?") for the purposes of this assignment
+    //@Scheduled(fixedRate = 1000000)
     public void fetchData() {
         List<Rate> data = apiFetcher.fetchData();
         ratesService.saveListOfRates(data);

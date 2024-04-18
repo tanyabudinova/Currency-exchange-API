@@ -14,7 +14,7 @@ public class ExceptionHandlerAdvice {
 
     @ExceptionHandler(MissingRateException.class)
     public ResponseEntity<ApiError> handleException(MissingRateException e) {
-        // TODO:log exception
+        // log exception
         return buildResponse(HttpStatus.NOT_FOUND, e.getMessage());
     }
 

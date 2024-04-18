@@ -26,6 +26,7 @@ public class ApiFetcherImpl implements ApiFetcher {
     private final List<String> currencies;
 
     public ApiFetcherImpl() {
+        //for the purposes of this assignment
         currencies = new ArrayList<>(Arrays.asList("USD", "BGN", "CNY", "EUR", "ZAR"));
     }
 
