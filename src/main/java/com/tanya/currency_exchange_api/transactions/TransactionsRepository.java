@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface TransactionsRepository extends JpaRepository<TransactionEntity, UUID>{
-    List<TransactionEntity> findByTimestampBetween(LocalDateTime starOfDay, LocalDateTime endOfDay,
+    List<TransactionEntity> findByTimestampBetweenOrderByTimestamp(LocalDateTime starOfDay, LocalDateTime endOfDay,
                                                    Pageable pageable);
 }

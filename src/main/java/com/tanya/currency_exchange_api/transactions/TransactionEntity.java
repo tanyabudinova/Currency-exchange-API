@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -81,5 +82,31 @@ public class TransactionEntity {
     public TransactionEntity setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TransactionEntity entity = (TransactionEntity) o;
+
+        if (!Objects.equals(id, entity.id)) return false;
+        if (!sourceAmount.equals(entity.sourceAmount)) return false;
+        if (!rate.equals(entity.rate)) return false;
+        if (!sourceCurrency.equals(entity.sourceCurrency)) return false;
+        if (!targetCurrency.equals(entity.targetCurrency)) return false;
+        return timestamp.equals(entity.timestamp);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + sourceAmount.hashCode();
+        result = 31 * result + rate.hashCode();
+        result = 31 * result + sourceCurrency.hashCode();
+        result = 31 * result + targetCurrency.hashCode();
+        result = 31 * result + timestamp.hashCode();
+        return result;
     }
 }

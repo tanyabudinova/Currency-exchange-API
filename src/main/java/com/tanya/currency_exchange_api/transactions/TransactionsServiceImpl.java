@@ -70,7 +70,7 @@ public class TransactionsServiceImpl implements TransactionsService {
         LocalDateTime startOfDay = historyRequest.date().atStartOfDay();
         LocalDateTime endOfDay = historyRequest.date().atTime(LocalTime.MAX);
         List<TransactionEntity> transactions = transactionsRepository
-                .findByTimestampBetween(startOfDay, endOfDay, pageable);
+                .findByTimestampBetweenOrderByTimestamp(startOfDay, endOfDay, pageable);
         List<TransactionDTO> DTOs = transactions.stream()
                 .map(this::turnEntityToDTO).toList();
         return new HistoryResponse(DTOs);

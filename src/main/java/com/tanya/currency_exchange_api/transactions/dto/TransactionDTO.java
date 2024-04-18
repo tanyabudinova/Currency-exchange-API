@@ -77,4 +77,30 @@ public class TransactionDTO {
         this.timestamp = timestamp;
         return this;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TransactionDTO that = (TransactionDTO) o;
+
+        if (!id.equals(that.id)) return false;
+        if (!sourceAmount.equals(that.sourceAmount)) return false;
+        if (!rate.equals(that.rate)) return false;
+        if (!sourceCurrency.equals(that.sourceCurrency)) return false;
+        if (!targetCurrency.equals(that.targetCurrency)) return false;
+        return timestamp.equals(that.timestamp);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + sourceAmount.hashCode();
+        result = 31 * result + rate.hashCode();
+        result = 31 * result + sourceCurrency.hashCode();
+        result = 31 * result + targetCurrency.hashCode();
+        result = 31 * result + timestamp.hashCode();
+        return result;
+    }
 }
