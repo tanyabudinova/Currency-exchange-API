@@ -4,7 +4,8 @@ import com.tanya.currency_exchange_api.rates.dto.RatesResponse;
 import com.tanya.currency_exchange_api.utils.MissingRateException;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RatesServiceImpl implements RatesService {

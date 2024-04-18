@@ -5,14 +5,16 @@ import com.tanya.currency_exchange_api.rates.RatesRepository;
 import com.tanya.currency_exchange_api.transactions.dto.*;
 import com.tanya.currency_exchange_api.utils.MissingRateException;
 import com.tanya.currency_exchange_api.utils.MissingTransactionException;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class TransactionsServiceImpl implements TransactionsService {

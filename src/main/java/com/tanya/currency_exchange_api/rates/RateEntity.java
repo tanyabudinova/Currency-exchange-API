@@ -1,6 +1,9 @@
 package com.tanya.currency_exchange_api.rates;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import java.io.Serializable;
 
