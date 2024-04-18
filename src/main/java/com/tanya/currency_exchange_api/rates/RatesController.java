@@ -3,6 +3,7 @@ package com.tanya.currency_exchange_api.rates;
 import com.tanya.currency_exchange_api.rates.dto.RatesRequest;
 import com.tanya.currency_exchange_api.rates.dto.RatesResponse;
 import com.tanya.currency_exchange_api.utils.ApiError;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,7 @@ public class RatesController {
         this.ratesService = ratesService;
     }
 
+    @Operation(summary = "Get the exchange rate between two currencies.")
     @GetMapping
     public ResponseEntity<RatesResponse> exchangeRate(@Valid @ParameterObject RatesRequest ratesRequest) {
         RatesResponse result = ratesService.getExchangeRate(ratesRequest.sourceCurrency(),

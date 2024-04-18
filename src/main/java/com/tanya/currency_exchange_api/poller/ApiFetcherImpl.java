@@ -77,6 +77,8 @@ public class ApiFetcherImpl implements ApiFetcher {
             this.data = data;
         }
 
+        public JsonData() {}
+
         public static class CurrencyRate {
             @JsonProperty
             public String code;
@@ -88,6 +90,8 @@ public class ApiFetcherImpl implements ApiFetcher {
                 this.code = code;
                 this.value = value;
             }
+
+            public CurrencyRate() {}
         }
     }
 }

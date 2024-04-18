@@ -13,16 +13,19 @@ import java.util.Objects;
 public class ExceptionHandlerAdvice {
 
     @ExceptionHandler(MissingRateException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<ApiError> handleException(MissingRateException e) {
         return buildResponse(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
     @ExceptionHandler(MissingTransactionException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<ApiError> handleException(MissingTransactionException e) {
         return buildResponse(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<?> handleValidationExceptions(MethodArgumentNotValidException ex) {
         String errorMessage = Objects.requireNonNull(ex.getBindingResult().getFieldError()).getDefaultMessage();
         return buildResponse(HttpStatus.BAD_REQUEST, errorMessage);

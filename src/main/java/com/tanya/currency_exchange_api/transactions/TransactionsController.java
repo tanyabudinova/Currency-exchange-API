@@ -4,6 +4,7 @@ import com.tanya.currency_exchange_api.transactions.dto.ConvertRequest;
 import com.tanya.currency_exchange_api.transactions.dto.ConvertResponse;
 import com.tanya.currency_exchange_api.transactions.dto.HistoryRequest;
 import com.tanya.currency_exchange_api.transactions.dto.HistoryResponse;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import org.springdoc.core.annotations.ParameterObject;
@@ -23,6 +24,8 @@ public class TransactionsController {
         this.transactionsService = transactionsService;
     }
 
+    @Operation(summary = "Save a currency conversion transaction by providing the source currency, target currency and amount." +
+            "Returns the converted amount and the transaction id.")
     @PostMapping
     public ResponseEntity<ConvertResponse> currencyConversion(@Valid @RequestBody ConvertRequest convertRequest) {
         ConvertResponse response = transactionsService.createTransaction(convertRequest);
@@ -30,6 +33,9 @@ public class TransactionsController {
                 .body(response);
     }
 
+    @Operation(summary = "Get a paginated history of currency conversion transactions by date " +
+            "or get a single transaction by id. " +
+            "The date should be in the format yyyy-MM-dd.")
     @GetMapping
     public ResponseEntity<HistoryResponse> conversionHistory(@Valid @ParameterObject HistoryRequest historyRequest) {
         HistoryResponse response = transactionsService.getTransactions(historyRequest);
