@@ -1,13 +1,14 @@
-#Currency Rate Application
+# Currency Rate Application
 This Spring application fetches currency rates from an external API and provides endpoints to retrieve and manipulate currency rates.
-##Features
+
+## Features
 - Fetch currency rates from an external API.
 - Store currency rates in a database.
 - Retrieve currency rates for specific currencies.
 - Convert amounts between different currencies.
 - Retrieve historical currency conversions.
 
-##Technologies Used
+## Technologies Used
 - Java
 - Spring Boot
 - Spring Web
@@ -15,14 +16,14 @@ This Spring application fetches currency rates from an external API and provides
 - Postgres
 - External API ([currencyapi.com](https://currencyapi.com/))
 
-##Getting Started
+## Getting Started
 
-###Prerequisites
+### Prerequisites
 - Java (version 17 or above)
 
-###Usage
+### Usage
 
-####Docker
+#### Docker
 1. Build the JAR file.
 ```shell
 ./gradlew bootJar
@@ -32,7 +33,7 @@ This Spring application fetches currency rates from an external API and provides
 docker-compose up --build
 ```
 
-####Local
+#### Local
 1. Run the Postgres DB.
 ```shell
 docker compose up -d db
