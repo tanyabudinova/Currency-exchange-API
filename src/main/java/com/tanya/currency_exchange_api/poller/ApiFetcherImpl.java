@@ -25,14 +25,16 @@ public class ApiFetcherImpl implements ApiFetcher {
 
     private final List<String> currencies;
 
-    public ApiFetcherImpl() {
+    private final RestTemplate restTemplate;
+
+    public ApiFetcherImpl(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
         //for the purposes of this assignment
         currencies = new ArrayList<>(Arrays.asList("USD", "BGN", "CNY", "EUR", "ZAR"));
     }
 
     @Override
     public List<Rate> fetchData() {
-        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("apikey", apiKey);
         HttpEntity<String> httpEntity = new HttpEntity<>(headers);
@@ -67,16 +69,25 @@ public class ApiFetcherImpl implements ApiFetcher {
                 .build().toUriString();
     }
 
-    private static class JsonData {
+    public static class JsonData {
         @JsonProperty
         public Map<String, CurrencyRate> data;
 
-        static class CurrencyRate {
+        public JsonData(Map<String, CurrencyRate> data) {
+            this.data = data;
+        }
+
+        public static class CurrencyRate {
             @JsonProperty
             public String code;
 
             @JsonProperty
             public Double value;
+
+            public CurrencyRate(String code, Double value) {
+                this.code = code;
+                this.value = value;
+            }
         }
     }
 }

@@ -14,13 +14,11 @@ public class ExceptionHandlerAdvice {
 
     @ExceptionHandler(MissingRateException.class)
     public ResponseEntity<ApiError> handleException(MissingRateException e) {
-        // log exception
         return buildResponse(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
     @ExceptionHandler(MissingTransactionException.class)
     public ResponseEntity<ApiError> handleException(MissingTransactionException e) {
-        // TODO:log exception
         return buildResponse(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
